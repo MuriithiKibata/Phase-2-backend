@@ -1,0 +1,2 @@
+class UserJwtsController < ApplicationController
+end

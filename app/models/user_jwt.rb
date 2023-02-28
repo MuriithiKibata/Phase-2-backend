@@ -1,2 +1,0 @@
-class UserJwt < ApplicationRecord
-end

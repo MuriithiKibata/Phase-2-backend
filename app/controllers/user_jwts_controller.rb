@@ -1,4 +1,5 @@
 class UserJwtsController < ApplicationController
+  
     skip_before_action :authorize, only: [:create]
 
     def create
@@ -10,4 +11,8 @@ class UserJwtsController < ApplicationController
             render json: {errors: "Password or email is incorrect"}, status: :unauthorized
     end
   end
+
+  private
+
+ 
 end

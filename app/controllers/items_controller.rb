@@ -4,20 +4,22 @@ class ItemsController < ApplicationController
     end
 
     def create
-        items = Items.create!(permitted_attributes)
+        items = Item.create!(permitted_attributes)
         render json: items, status: :created
     end
 
     def destroy
-        items = Items.find(params[:id])
+        items = Item.find(params[:id])
         items.destroy
         head :no_content
     end
 
     def update
-        items = Items.find(params[:id])
+      
+        items = Item.find(params[:id])
         items.update!(update_attributes)
         render json: items, status: :ok
+       
     end
 
     private
@@ -27,7 +29,7 @@ class ItemsController < ApplicationController
     end
 
     def permitted_attributes
-        params.permit(:name, :quantity, :price, :store_id)
+        params.permit(:name, :quantity, :price)
     end
 
 end

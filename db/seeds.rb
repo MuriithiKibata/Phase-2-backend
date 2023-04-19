@@ -33,4 +33,7 @@ items2 = Item.create(name: "Soap", quantity: 10, price: 100, store_id: store2.id
 items3 = Item.create(name: "Blueband", quantity: 25, price: 150, store_id: store2.id)
 items4 = Item.create(name: "Shampoo", quantity: 5, price: 600, store_id: store2.id)
 
+cart1 = Cart.create()
+
+
 puts "Creation Completed"

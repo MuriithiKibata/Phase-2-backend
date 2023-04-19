@@ -15,11 +15,24 @@ class ItemsController < ApplicationController
     end
 
     def update
-      
         items = Item.find(params[:id])
         items.update!(update_attributes)
         render json: items, status: :ok
        
+    end
+
+    #Cart methods
+
+    def decrement
+        item = Item.find(params[:id])
+        item.update!(quantity: item.quantity - params[:amount])
+        render json: item
+    end
+
+    def increment 
+        item = Item.find(params[:id])
+        item.update!(quantity: item.quantity + params[:amount])
+        render json: item
     end
 
     private

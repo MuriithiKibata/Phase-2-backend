@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get '/profile', to: 'users#profile'
   patch '/items/decrement/:id', to: 'items#decrement'
   patch '/items/increment/:id', to: 'items#increment'
-  get '/newcart', to: 'carts#newCart'
+  post '/newcart', to: 'carts#newCart'
   get '/clearcart', to: 'carts#clearCart'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

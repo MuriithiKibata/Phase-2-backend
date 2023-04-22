@@ -25,7 +25,7 @@ class ItemsController < ApplicationController
 
     def decrement
         item = Item.find(params[:id])
-        item.update!(quantity: item.quantity - params[:amount])
+        item.update!(quantity: item.quantity - params[:amount].to_i)
         render json: item
     end
 

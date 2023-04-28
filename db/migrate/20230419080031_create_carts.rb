@@ -5,7 +5,7 @@ class CreateCarts < ActiveRecord::Migration[7.0]
       t.integer :price
       t.integer :quantity
       t.integer :user_id
-
+      t.integer :item_id
 
       t.timestamps
     end

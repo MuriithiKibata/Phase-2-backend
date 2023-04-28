@@ -16,6 +16,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_19_080031) do
     t.integer "price"
     t.integer "quantity"
     t.integer "user_id"
+    t.integer "item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

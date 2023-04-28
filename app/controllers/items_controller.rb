@@ -31,7 +31,7 @@ class ItemsController < ApplicationController
 
     def increment 
         item = Item.find(params[:id])
-        item.update!(quantity: item.quantity + params[:amount])
+        item.update!(quantity: item.quantity + params[:amount].to_i)
         render json: item
     end
 
@@ -42,7 +42,7 @@ class ItemsController < ApplicationController
     end
 
     def permitted_attributes
-        params.permit(:name, :quantity, :price)
+        params.permit(:name, :quantity, :price, :store_id)
     end
 
 end

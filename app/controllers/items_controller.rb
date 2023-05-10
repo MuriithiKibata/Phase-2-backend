@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
     def index
-        render json: Item.all
+        render json: @user.items
     end
 
     def create
@@ -21,19 +21,8 @@ class ItemsController < ApplicationController
        
     end
 
-    #Cart methods
 
-    def decrement
-        item = Item.find(params[:id])
-        item.update!(quantity: item.quantity - params[:amount].to_i)
-        render json: item
-    end
-
-    def increment 
-        item = Item.find(params[:id])
-        item.update!(quantity: item.quantity + params[:amount].to_i)
-        render json: item
-    end
+   
 
     private
 

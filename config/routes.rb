@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :sales
   resources :carts
   resources :user_jwts, only: [:create]
   resources :stores, only: [:create, :destroy, :show, :index]
@@ -12,6 +13,8 @@ Rails.application.routes.draw do
   patch '/items/increment/:id', to: 'items#increment'
   post '/newcart', to: 'carts#newCart'
   post '/create_items', to: 'items#create_new'
+  get '/delete', to: 'sales#delete'
+  get '/deletestore', to: 'stores#delete'
  
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :sales
+  # resources :sales
   resources :carts
   resources :user_jwts, only: [:create]
   resources :stores, only: [:create, :destroy, :show, :index]
@@ -9,8 +9,6 @@ Rails.application.routes.draw do
   get '/profile', to: 'users#profile'
   get '/clearcart', to: 'carts#clearCart'
   get '/subtotal', to: 'carts#cartTotal'
-  patch '/items/decrement/:id', to: 'items#decrement'
-  patch '/items/increment/:id', to: 'items#increment'
   post '/newcart', to: 'carts#newCart'
   post '/create_items', to: 'items#create_new'
   get '/delete', to: 'sales#delete'

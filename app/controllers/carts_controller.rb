@@ -1,31 +1,36 @@
 class CartsController < ApplicationController
   before_action :set_cart, only: %i[ show update destroy ]
-
 def index
   render json: @user.carts
 end
 
 
-  def update
-    cart.find(params[:id])
-    cart.update(cart_params)
-    render json: cart
-  end
-
   def destroy
-    cart.find(params[:id])
+    cart = Cart.find(params[:id])
     cart.destroy
     head :no_content
   end
 
   def newCart
-  cartItem = @user.items.find(params[:id])
-  @newItem =  Cart.new({name: cartItem.name, price: cartItem.price, quantity: params[:amount], user_id: @user.id}) 
-  @newItem.save
-  render json: @newItem
+    cartItem = @user.items.find(params[:id])
+    @newItem =  Cart.new({name: cartItem.name, price: cartItem.price, quantity: params[:amount], user_id: @user.id, item_id: cartItem.id}) 
+    @newItem.save
+    render json: @newItem
   end
 
+
+  def cartTotal
+   subtotal =  @user.carts.sum{|c| c.price * c.quantity}
+   render json: subtotal
+  end
+
+ 
 def clearCart
+  cart_items = @user.carts
+    cart_items.each do |i| 
+      item = Item.find_by(id: i.item_id)
+      item.update!(quantity: item.quantity - i.quantity)
+    end
  Cart.where(user_id: @user.id).delete_all
 end
 

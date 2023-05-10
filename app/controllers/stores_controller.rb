@@ -1,10 +1,11 @@
 class StoresController < ApplicationController
 def index  
-render json: Store.all
+render json: @user.stores
 end
 
 def create
- store = Store.create!(permitted_attributes)
+ store = Store.new({name: params[:name], user_id: @user.id})
+ store.save
  render json: store, status: :created
 end
 
@@ -13,9 +14,8 @@ def show
     render json: store
 end
 
-def destroy
-    store = Store.find(params[:id])
-    store.destroy
+def delete
+    store = Store.where(user_id: @user.id).delete_all
     head :no_content
 end
 
